@@ -1,0 +1,589 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sister 💕</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6f0, #f3e5ff);
+            color: #4a3040;
+            overflow-x: hidden;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 20px;
+            animation: float 7s linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero .emoji {
+            font-size: 70px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin: 15px 0;
+            color: #c04478;
+        }
+
+        .hero h1 span {
+            color: #8e55c7;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 650px;
+            line-height: 1.7;
+            color: #65485a;
+        }
+
+        /* Button */
+        .btn {
+            margin-top: 30px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #d9578b, #9b5dcc);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(160, 70, 130, 0.25);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 25px rgba(160, 70, 130, 0.35);
+        }
+
+        /* Sections */
+        section {
+            margin: 70px 0;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 35px;
+            color: #b13d70;
+            margin-bottom: 15px;
+        }
+
+        section > p {
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* Letter */
+        .letter {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(100, 50, 100, 0.1);
+            text-align: left;
+            line-height: 1.9;
+            font-size: 17px;
+            margin-top: 30px;
+        }
+
+        .letter .signature {
+            margin-top: 25px;
+            text-align: right;
+            font-weight: bold;
+            color: #a83e73;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 30px 20px;
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(100, 50, 100, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #9b4f87;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        /* Photos */
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .photos img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(100, 50, 100, 0.15);
+            transition: 0.4s;
+        }
+
+        .photos img:hover {
+            transform: scale(1.04) rotate(1deg);
+        }
+
+        /* Surprise Section */
+        #surprise {
+            display: none;
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .surprise-box {
+            background: linear-gradient(135deg, #fff0f6, #f3e9ff);
+            padding: 45px 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 35px rgba(100, 50, 100, 0.12);
+        }
+
+        .surprise-box .big-heart {
+            font-size: 70px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .surprise-box h2 {
+            margin: 15px 0;
+        }
+
+        .surprise-box p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .surprise-box h3 {
+            line-height: 1.6;
+            color: #9b4f87;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #76566b;
+            font-size: 15px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .cards,
+            .photos {
+                grid-template-columns: 1fr;
+            }
+
+            .photos img {
+                height: 300px;
+            }
+
+            .letter {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Hearts -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">💗</div>
+    <div class="heart" style="left: 25%; animation-delay: 2s;">💕</div>
+    <div class="heart" style="left: 45%; animation-delay: 4s;">💖</div>
+    <div class="heart" style="left: 65%; animation-delay: 1s;">💗</div>
+    <div class="heart" style="left: 85%; animation-delay: 3s;">💕</div>
+
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="hero">
+
+            <div class="emoji">🌷</div>
+
+            <h1>
+                 <span>Papa</span> ❤️
+            </h1>
+
+            <p>
+                I know I don't always say it...
+                but you mean more to me than you probably realize.
+                So I made this little corner of the internet just for you. 🥹
+            </p>
+
+        </div>
+
+
+        <!-- LETTER -->
+        <section>
+
+            <h2>A Little Letter For You 💌</h2>
+
+            <div class="letter">
+
+                <p>
+                    Dear Sister,
+                </p>
+
+                <br>
+
+                <p>
+                    Sometimes I think about how lucky I am to have you
+                    as my sister. We may argue, annoy each other,
+                    and sometimes drive each other crazy 😂...
+                    but at the end of the day, you're someone
+                    I can never imagine my life without.
+                </p>
+
+                <br>
+
+                <p>
+                    You've been there through so many moments,
+                    both big and small. Your smile, your silly talks,
+                    your little habits and even your annoying moments
+                    have become memories that I'll always keep close
+                    to my heart.
+                </p>
+
+                <br>
+
+                <p>
+                    I may not always express it properly,
+                    but I genuinely want to see you happy.
+                    I want you to achieve everything you dream about
+                    and become the person you want to be.
+                </p>
+
+                <br>
+
+                <p>
+                    No matter where life takes us,
+                    you'll always have someone cheering for you.
+                    And yes... unfortunately for you,
+                    you'll always be stuck with me as your sibling. 😂❤️
+                </p>
+
+                <p class="signature">
+                    With lots of love,<br>
+                    Your Dada ❤️
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHY SHE IS SPECIAL -->
+        <section>
+
+            <h2>Why You're Special 🌸</h2>
+
+            <p>
+                Just a few things I love about having you as my sister.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icon">🥹</div>
+
+                    <h3>Your Heart</h3>
+
+                    <p>
+                        You care about people more than you realize,
+                        and that's something really special about you.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">😂</div>
+
+                    <h3>Your Smile</h3>
+
+                    <p>
+                        Your smile can completely change the mood
+                        of a room. So please keep smiling always.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">🫶</div>
+
+                    <h3>Our Bond</h3>
+
+                    <p>
+                        We don't have to be perfect siblings.
+                        We'll always be family, and that's enough.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEMORIES -->
+        <section>
+
+            <h2>Our Memories 📸</h2>
+
+            <p>
+                Some memories that I'll always keep close to my heart. ❤️
+            </p>
+
+            <div class="photos">
+
+                <!-- Replace these with your own photos -->
+
+                <img src="C:\users\perarasu\Desktop\ASSIGNMENT\terrin\code\WhatsApp Image 2026-09-01 at 11.53.16 AM.jpeg" alt="Our Memory">
+
+                <img src="C:\users\perarasu\Desktop\ASSIGNMENT\terrin\code\WhatsApp Image 2026-09-01 at 11.54.27 AM.jpeg" alt="Our Memory">
+
+                <img src="C:\users\perarasu\Desktop\ASSIGNMENT\terrin\code\WhatsApp Image 2026-09-01 at 11.58.09 AM.jpeg" alt="Our Memory">
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL BUTTON -->
+        <section>
+
+            <h2>Before You Go... 💕</h2>
+
+            <p>
+                There's one more little thing I want to show you. 🥹
+            </p>
+
+            <button class="btn" onclick="showSurprise()">
+                Click for a Little Surprise 🎁
+            </button>
+
+        </section>
+
+
+        <!-- FINAL SURPRISE -->
+        <section id="surprise">
+
+            <div class="surprise-box">
+
+                <div class="big-heart">
+                    ❤️
+                </div>
+
+                <h2>
+                    One Last Thing...
+                </h2>
+
+                <p>
+                    No matter how old we get,
+                    you'll always be my little sister.
+                    I hope you never forget how loved you are.
+                    Keep chasing your dreams, keep smiling,
+                    and always remember that I'll be there for you.
+                </p>
+
+                <br>
+
+                <h3>
+                    You're not just my sister...
+                    you're one of my favorite people in the world. 🥹❤️
+                </h3>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            Made with ❤️ specially for my sister
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        function showSurprise() {
+
+            const surprise = document.getElementById("surprise");
+
+            surprise.style.display = "block";
+
+            surprise.scrollIntoView({
+                behavior: "smooth"
+            });
+
+
+            // Create lots of floating hearts
+
+            for (let i = 0; i < 30; i++) {
+
+                const heart = document.createElement("div");
+
+                heart.innerHTML =
+                    ["❤️", "💗", "💕", "💖", "✨", "🌸"]
+                    [Math.floor(Math.random() * 6)];
+
+                heart.style.position = "fixed";
+                heart.style.left = Math.random() * 100 + "%";
+                heart.style.bottom = "-20px";
+                heart.style.fontSize =
+                    (15 + Math.random() * 25) + "px";
+
+                heart.style.zIndex = "10";
+                heart.style.pointerEvents = "none";
+
+                document.body.appendChild(heart);
+
+
+                heart.animate(
+
+                    [
+                        {
+                            transform: "translateY(0) rotate(0deg)",
+                            opacity: 1
+                        },
+
+                        {
+                            transform:
+                                "translateY(-100vh) rotate(360deg)",
+                            opacity: 0
+                        }
+                    ],
+
+                    {
+                        duration: 3000 + Math.random() * 3000,
+                        easing: "linear"
+                    }
+
+                );
+
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
